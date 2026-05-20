@@ -244,7 +244,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\config\IPlugEffect-ios.xcconfig">
+    <None Include="..\config\HAL-ios.xcconfig">
       <Filter>config</Filter>
     </None>
     <None Include="..\config\IPlugEffect-web.mk">
@@ -253,7 +253,7 @@
     <None Include="..\config\IPlugEffect-win.props">
       <Filter>config</Filter>
     </None>
-    <None Include="..\config\IPlugEffect-mac.xcconfig">
+    <None Include="..\config\HAL-mac.xcconfig">
       <Filter>config</Filter>
     </None>
   </ItemGroup>
