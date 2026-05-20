@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=\"$CLAUDE_TOOL_INPUT_FILE_PATH\"; if [[ \"$file\" == *.cpp || \"$file\" == *.h || \"$file\" == *.mm ]]; then echo \"[HAL] C++ file edited: $file — run /build to verify.\"; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,5 +1,13 @@
 #pragma once
 #include "IPlug_include_in_plug_hdr.h"
+#include "LFO.h"
+#include "SVF.h"
+#include "HALVoice.h"
+#include "HALEffects.h"
+#include <atomic>
+#include <mutex>
+#include <string>
+#include <vector>
 
 const int kNumPresets = 1;
 
@@ -72,6 +80,17 @@ enum EParams
   kEQLowShelf,
   kEQHighShelf,
 
+  // Pitch Envelope (for 808 kicks, stabs, etc.)
+  kPitchEnvAmount,
+  kPitchEnvAttack,
+  kPitchEnvDecay,
+
+  // Arpeggiator
+  kArpEnabled,
+  kArpRate,
+  kArpPattern,
+  kArpOctaves,
+
   kNumParams
 };
 
@@ -81,7 +100,9 @@ enum EControlTags
   kCtrlTagGenerateButton,
   kCtrlTagStyleHint,
   kCtrlTagStatus,
-  kCtrlTagHistory,
+  kCtrlTagNudgeInput,
+  kCtrlTagCategoryTab,
+  kCtrlTagExportButton,
   kNumCtrlTags
 };
 
@@ -89,13 +110,62 @@ class HAL final : public iplug::Plugin
 {
 public:
   HAL(const iplug::InstanceInfo& info);
+
   void ProcessBlock(iplug::sample** inputs, iplug::sample** outputs, int nFrames) override;
+  void ProcessMidiMsg(const iplug::IMidiMsg& msg) override;
   void OnParamChange(int paramIdx) override;
   void OnReset() override;
+  void OnIdle() override;
 
 private:
-  void GeneratePatch(const char* description, const char* styleHint);
-  void ApplyPatchJSON(const char* jsonStr);
+  void GeneratePatch(const std::string& prompt, const std::string& style,
+                     const std::string& nudge = "");
+  void ApplyPatchJSON(const std::string& json);
+  void SetStatus(const std::string& msg);
+  void InitDSP();
+  void UpdateSynthParams();
+  int  FindFreeVoice();
+  std::string BuildCurrentPatchJSON() const;
 
   double mSampleRate = 44100.0;
+
+  // ── Synthesis engine ────────────────────────────────────────────────────────
+  HALSynthParams mSynthParams;
+
+  static constexpr int kNumVoices = 8;
+  HALVoice mVoices[kNumVoices];
+  int      mVoiceAge = 0;
+
+  iplug::LFO<double> mLFO[2];
+
+  // Master EQ: low shelf + high shelf (stereo, NC=2)
+  iplug::SVF<double,2> mEQLow;
+  iplug::SVF<double,2> mEQHigh;
+
+  HALChorus mChorus;
+  HALReverb mReverb;
+  HALDelay  mDelay;
+
+  // ── Thread-safe patch handoff from HTTP callback → OnIdle ──────────────────
+  std::mutex          mPatchMutex;
+  std::string         mPendingPatch;
+  std::string         mPendingStatus;
+  std::atomic<bool>   mPatchReady{false};
+  std::atomic<bool>   mStatusDirty{false};
+  std::atomic<bool>   mGenerating{false};
+
+  // ── UX state ────────────────────────────────────────────────────────────────
+  void ExportWAV();
+  void ExportVital();
+
+  std::string mLastPrompt;   // last successful description, used by nudge
+  std::string mActiveCategory = "PAD";
+  int         mAnimTick  = 0;
+  int         mAnimFrame = 0;
+
+  // Arpeggiator state
+  std::vector<int> mHeldNotes;
+  int    mArpIdx        = 0;
+  double mArpPhase      = 0.0;
+  bool   mArpUp         = true;
 };

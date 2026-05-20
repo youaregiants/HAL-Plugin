@@ -1,4 +1,6 @@
 build/
+build-mac/
+HAL/build-mac/
 *.xcuserdata
 *.xcworkspace/xcuserdata
 DerivedData/
@@ -8,3 +10,10 @@ DerivedData/
 *.vst3
 *.component
 .DS_Store
+*.xcuserstate
+*.bak
+iPlug2/
+__pycache__/
+*.pyc
+.env
+*.xcworkspace/xcuserdata/

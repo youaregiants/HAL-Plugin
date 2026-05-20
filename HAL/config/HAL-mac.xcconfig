@@ -15,7 +15,7 @@ BINARY_NAME = HAL
 
 // ------------------------------
 // HEADER AND LIBRARY SEARCH PATHS
-EXTRA_INC_PATHS = $(IGRAPHICS_INC_PATHS)
+EXTRA_INC_PATHS = $(IGRAPHICS_INC_PATHS) $(JSON_INC_PATH) $(EXTRAS_PATH)
 EXTRA_LIB_PATHS = $(IGRAPHICS_LIB_PATHS)
 EXTRA_LNK_FLAGS = -framework Metal -framework MetalKit -framework OpenGL //$(IGRAPHICS_LNK_FLAGS)
 
@@ -57,5 +57,7 @@ GCC_CFLAGS[arch=x86_64] = -Wno-write-strings -mfpmath=sse -msse -msse2 -msse3 //
 // Uncomment to enable relaxed IEEE compliance
 //GCC_FAST_MATH = YES
 
-// uncomment this to enable codesigning - necessary for AUv3 delivery
-CODE_SIGN_IDENTITY=//Mac Developer
+// Ad-hoc signing for local dev — no Developer account required
+CODE_SIGN_IDENTITY = -
+CODE_SIGNING_ALLOWED = YES
+CODE_SIGNING_REQUIRED = YES
