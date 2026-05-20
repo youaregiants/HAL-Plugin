@@ -5,15 +5,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>IPlugEffect</string>
+	<string>HAL</string>
 	<key>CFBundleGetInfoString</key>
-	<string>IPlugEffect v1.0.0 Copyright 2025 Acme Inc</string>
+	<string>HAL v1.0.0 Copyright 2025 Acme Inc</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.AcmeInc.vst.IPlugEffect</string>
+	<string>com.AcmeInc.vst.HAL</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>IPlugEffect</string>
+	<string>HAL</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>

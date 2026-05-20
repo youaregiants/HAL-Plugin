@@ -5,26 +5,32 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>IPlugEffect</string>
+	<string>HAL</string>
 	<key>CFBundleGetInfoString</key>
-	<string>IPlugEffect v1.0.0 Copyright 2025 Acme Inc</string>
+	<string>HAL v1.0.0 Copyright 2025 Acme Inc</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.AcmeInc.clap.IPlugEffect</string>
+	<string>com.AcmeInc.aax.HAL</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>IPlugEffect</string>
+	<string>HAL</string>
 	<key>CFBundlePackageType</key>
-	<string>BNDL</string>
+	<string>TDMw</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
-	<string>Ipef</string>
+	<string>PTul</string>
 	<key>CFBundleVersion</key>
 	<string>1.0.0</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.13.0</string>
+	<key>LSMultipleInstancesProhibited</key>
+	<string>true</string>
+	<key>LSPrefersCarbon</key>
+	<false/>
+	<key>NSAppleScriptEnabled</key>
+	<string>No</string>
 </dict>
 </plist>

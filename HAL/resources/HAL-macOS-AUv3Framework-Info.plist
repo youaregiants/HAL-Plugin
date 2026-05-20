@@ -5,32 +5,18 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>IPlugEffect</string>
-	<key>CFBundleGetInfoString</key>
-	<string>IPlugEffect v1.0.0 Copyright 2025 Acme Inc</string>
+	<string>AUv3Framework</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.AcmeInc.aax.IPlugEffect</string>
+	<string>com.AcmeInc.app.HAL.AUv3Framework</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>IPlugEffect</string>
+	<string>AUv3Framework</string>
 	<key>CFBundlePackageType</key>
-	<string>TDMw</string>
+	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
-	<key>CFBundleSignature</key>
-	<string>PTul</string>
 	<key>CFBundleVersion</key>
 	<string>1.0.0</string>
-	<key>CSResourcesFileMapped</key>
-	<true/>
-	<key>LSMinimumSystemVersion</key>
-	<string>10.13.0</string>
-	<key>LSMultipleInstancesProhibited</key>
-	<string>true</string>
-	<key>LSPrefersCarbon</key>
-	<false/>
-	<key>NSAppleScriptEnabled</key>
-	<string>No</string>
 </dict>
 </plist>
