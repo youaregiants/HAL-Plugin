@@ -1,0 +1,10 @@
+build/
+*.xcuserdata
+*.xcworkspace/xcuserdata
+DerivedData/
+*.o
+*.a
+*.dylib
+*.vst3
+*.component
+.DS_Store
